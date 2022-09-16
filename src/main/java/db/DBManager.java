@@ -123,6 +123,44 @@ public class DBManager {
         }
 
     }
+    public static void modifyDiscipline(String id, String discipline) {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.CONNECTION_URL);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE discipline SET discipline = '"+discipline+"' WHERE (id = '"+id+"');");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static Discipline getDisciplineById(String id) {
+
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.CONNECTION_URL);
+            Statement stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery("Select d.id, d.discipline from discipline as d\n" +
+                    "where status = '1' AND d.id ="+id);
+
+            while (rs.next()) {
+
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getInt("id"));
+                discipline.setDiscipline(rs.getString("discipline"));
+
+                return discipline;
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 
     public static void createTerm(String name, String duration, String[] disciplines) {
 
@@ -188,7 +226,20 @@ public class DBManager {
 
     }
 
-    public static void deleteStudent(String id) {
+   public static void deleteStudent(String id) {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.CONNECTION_URL);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + id + "');");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    } public static void deleteDiscipline(String id) {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");

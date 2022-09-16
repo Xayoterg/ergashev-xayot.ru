@@ -9,9 +9,9 @@ public class Discipline {
     public Discipline() {
     }
 
-    public Discipline(int id, String disciplina) {
+    public Discipline(int id, String discipline) {
         this.id = id;
-        this.discipline = disciplina;
+        this.discipline = discipline;
     }
 
     public int getId() {

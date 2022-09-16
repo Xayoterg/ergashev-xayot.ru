@@ -1,7 +1,7 @@
 package controllers;
 
 import db.DBManager;
-import entity.Student;
+import entity.Discipline;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,9 +17,8 @@ public class DisciplineController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<Student> students = DBManager.getAllActiveStudent();
-        req.setAttribute("students",students);
-
-        req.getRequestDispatcher("WEB-INF/jsp/discipline-progress.jsp").forward(req,resp);
+        ArrayList<Discipline> disciplines = DBManager.getAllActiveDisciplines();
+        req.setAttribute("disciplines",disciplines);
+        req.getRequestDispatcher("WEB-INF/jsp/discipline.jsp").forward(req,resp);
 }
 }

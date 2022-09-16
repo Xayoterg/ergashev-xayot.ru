@@ -111,13 +111,13 @@
                     <div class="root_discipline">
                         <div class="button_group2">
 
-                            <form action="/discipline_creating">
+                            <form action="/discipline_create" method="get">
                                 <input class="button_discipline" type="submit" value="Создать дисциплину…">
                             </form>
 
 
                             <input class="button_discipline" type="submit" value="Модифицировать выбранную дисциплину…" onclick="Disciplinemodify()">
-                            <input class="button_discipline" type="submit" value="Удалить выбранную дисциплину…" onclick="deleteDisciplines()">
+                            <input class="button_discipline" type="submit" value="Удалить выбранную дисциплину…" onclick="deleteDiscipline()">
 
                         </div>
                     </div>
@@ -128,10 +128,10 @@
 
 </div>
 
-<form action="/discipline_deleting" method="post" id="deleteForm">
+<form action="/discipline_delete" method="post" id="deleteForm">
     <input type="hidden" id="deleteHidden" name="deleteHidden">
 </form>
-<form action="/discipline_modifying" method="get" id="modifyForm">
+<form action="/discipline_modify" method="get" id="modifyForm">
     <input type="hidden" id="modifyHidden" name="modifyHidden">
 </form>
 </body></html>
